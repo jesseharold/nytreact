@@ -2,8 +2,7 @@
 var React = require("react");
 
 // Here we include all of the sub-components
-var Form = require("./Form");
-var Results = require("./Results");
+var Search = require("./Search");
 var Saved = require("./Saved");
 
 // Helper for making AJAX requests to our API
@@ -15,7 +14,9 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   // Note how we added in this history state variable
   getInitialState: function() {
-    return { searchTerm: "", results: "", history: [] };
+    return { 
+        savedList: [] 
+    };
   },
 
   // The moment the page renders get the History
@@ -71,9 +72,8 @@ var Main = React.createClass({
             </p>
           </div>
           <div className="col-md-12">
-            <Form />
-            <Results />
-            <Saved />
+            <Search />
+            <Saved savedList={this.state.savedList} />
           </div>
         </div>
       </div>

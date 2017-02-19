@@ -2,6 +2,10 @@ var React = require("react");
 
 var Saved = React.createClass({
   render: function() {
+    // generate the list items for each saved article
+    var savedList = this.props.savedList.map(function(article) {
+        return <li className="list-group-item" key={article.call}>{article.title}<button className="btn btn-warning btn-xs pull-right">Remove</button></li>;
+    });
     return (
         <div className="row">
           <div className="panel panel-default">
@@ -10,11 +14,7 @@ var Saved = React.createClass({
             </div>
             <div className="panel-body">
               <ul className="list-group">
-                <li className="list-group-item">saved article name  <button className="btn btn-warning btn-xs pull-right">Remove</button></li>
-                <li className="list-group-item">saved article name  <button className="btn btn-warning btn-xs pull-right">Remove</button></li>
-                <li className="list-group-item">saved article name  <button className="btn btn-warning btn-xs pull-right">Remove</button></li>
-                <li className="list-group-item">saved article name  <button className="btn btn-warning btn-xs pull-right">Remove</button></li>
-                <li className="list-group-item">saved article name  <button className="btn btn-warning btn-xs pull-right">Remove</button></li>
+                {savedList}
               </ul>
             </div>
           </div>
