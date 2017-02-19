@@ -5,8 +5,7 @@ Search the New York Times' archives by topic and date.
 Then save articles of interest to your Saved Articles area along with an annotation.
 
 TO DO
- - put NY times api query into helper file
- - add click handler to search button
+ - figure out axios promise, get return value
 
  - build express and mongo back end
  - add routes for saving an article and retrieving saved articles

@@ -6,7 +6,7 @@ var Search = require("./Search");
 var Saved = require("./Saved");
 
 // Helper for making AJAX requests to our API
-var helpers = require("../utils/helpers");
+//var helpers = require("../utils/helpers");
 
 // Creating the Main component
 var Main = React.createClass({
