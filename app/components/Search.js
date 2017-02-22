@@ -12,9 +12,10 @@ var Search = React.createClass({
     },
     handleSearch: function(event){
         event.preventDefault();
-        var queryResult = helpers.queryNYTimes("prince harry", 2000, 2010);
-        this.setState({resultList: queryResult});
-        console.log(queryResult);
+        var self = this;
+        var queryResult = helpers.queryNYTimes("prince harry", 2000, 2010).then(function(results){
+            self.setState({resultList: results});
+        });
         return false;
     },
     render: function() {
@@ -22,7 +23,7 @@ var Search = React.createClass({
             <div className="row">
                 <div className="panel panel-default">
                 <div className="panel-heading">
-                <h2 className="text-center">Form Component</h2>
+                <h2 className="text-center">Search the New York Times' Archive</h2>
                 </div>
                 <div className="panel-body">
                 <form>

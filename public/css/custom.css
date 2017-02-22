@@ -1,0 +1,13 @@
+#app {
+    font-family: 'Arimo', sans-serif;
+}
+#app .jumbotron {
+    font-family: 'Yeseva One', cursive;
+    background-color: #003;
+    color: white;
+}
+#app .panel-heading {
+    font-family: 'Yeseva One', cursive;
+    background-color: #226;
+    color: white;
+}

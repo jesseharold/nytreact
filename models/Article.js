@@ -14,6 +14,12 @@ var ArticleSchema = new Schema({
   datePublished: {
       type: Date
   },
+  snippet: {
+      type: String
+  },
+  byLine: {
+      type: String
+  },
   image: {
     type: String
   },

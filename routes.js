@@ -24,6 +24,8 @@ exports.setup = function(app) {
             title: req.body.title,
             link: req.body.link,
             datePublished: req.body.date,
+            snippet: req.body.snippet,
+            byLine: req.body.byLine,
             image: req.body.image
         }, function(err, createdSite){
             if (err){ 

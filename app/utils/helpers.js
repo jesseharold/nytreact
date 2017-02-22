@@ -14,7 +14,43 @@ var helpers = {
     if (endDate.length > 1){
       searchURL += "&end_date=" + endDate + "1231";
     }
-    return axios.get(searchURL);
+    return axios.get(searchURL).then(function(responseRaw){
+      if (responseRaw.data.response.docs.length > 0){
+        // validate and process the data into the format we want
+        var response = responseRaw.data.response.docs.map(function(article){
+          var articleObject = {
+            id: article._id,
+            byline: "",
+            headline: "",
+            snippet: "",
+            image: "",
+            date: "",
+            link: ""
+          };
+          if (article.byline && article.byline.original){
+            articleObject.byline = article.byline.original;
+          }
+          if (article.headline && article.headline.main){
+            articleObject.headline = article.headline.main;
+          }
+          if (article.lead_paragraph){
+            articleObject.snippet = article.lead_paragraph;
+          }
+          if (article.multimedia[0] && article.multimedia[0].type === "image"){
+            articleObject.image = article.multimedia[0].url;
+          }
+          if (article.pub_date){
+            articleObject.date = article.pub_date;
+          }
+          if (article.web_url){
+            articleObject.link = article.web_url;
+          }
+          return articleObject;
+        });
+        return response;
+      }
+      return "";
+    });
   },
   // This function hits our own server to retrieve the saved articles
   getSaved: function() {
