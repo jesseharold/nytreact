@@ -4,20 +4,25 @@ var Results = React.createClass({
   render: function() {
     // generate the list items for each retrieved article
     var self = this;
-    var resultList = this.props.resultList.map(function(article) {
-        var itemImage = "";
-        if (article.image){
-          itemImage = <img className="articleImage" src={article.image} />
-        } 
-        return <li className="list-group-item" key={article.id}>
-            {itemImage}            
-            <button className="btn btn-info btn-xs pull-right" onClick={function(){self.props.saveHandler(article)}}>Save</button>
-            <a className="articleLink" href={article.link} target="_blank">{article.headline}</a>
-            <br />{article.byline}
-            <br />{article.date}
-            <p>{article.snippet}</p>
-          </li>;
-    });
+    var resultList;
+    if (this.props.resultList && this.props.resultList.length > 0){
+      resultList = this.props.resultList.map(function(article) {
+          var itemImage = "";
+          if (article.image){
+            itemImage = <img className="articleImage" src={article.image} />
+          } 
+          return <li className="list-group-item" key={article.id}>
+              {itemImage}            
+              <button className="btn btn-info btn-xs pull-right" onClick={function(){self.props.saveHandler(article)}}>Save</button>
+              <a className="articleLink" href={article.link} target="_blank">{article.headline}</a>
+              <br />{article.byline}
+              <br />{article.date}
+              <p>{article.snippet}</p>
+            </li>;
+      });
+    } else {
+      resultList = <li className="list-group-item">Sorry, no results for that query.</li>
+    }
     return (
       <div className="panel panel-default">
         <div className="panel-heading">

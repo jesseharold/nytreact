@@ -15,18 +15,28 @@ var Main = React.createClass({
         savedList: [] 
     };
   },
-  // get all saved articles and copy them to Main's state
   componentWillMount: function(){
+    // get all saved articles and copy them to Main's state
     var self = this;
     helpers.getSaved().then(function(result){
       self.setState({savedList: result.data});
     });
   },
-  updateSaved: function(savedArticles) {
-    console.log("Main updateSaved", savedArticles);
+  updateSaved: function(saveThisArticle) {
+    // call the api to create a new saved article,
+    // then update state with new saved list
+    var self = this;
+    helpers.postSaved(saveThisArticle).then(function(result){
+      self.setState({savedList: result.data});
+    });
   },
   removeFromSaved: function(removeMe){
+    // call the api to remove an article from saved
+    // then update state with new saved list
     console.log("Main removeFromSaved", removeMe);
+    helpers.removeFromSaved(removeMe).then(function(data){
+      console.log(data);
+    })
   },
   render: function() {
     return (

@@ -9,7 +9,10 @@ var commentModel = require('./models/Comment');
 exports.setup = function(app) {
     // list out all saveds articles
     app.get("/api/saved", function(req, res) {
-        var promise = articleModel.find({}).exec();
+        var promise = articleModel
+            .find({})
+            .sort({updatedAt: -1})
+            .exec();
         promise.then(function(data){
             //console.log(data);
             res.json(data);
@@ -28,7 +31,7 @@ exports.setup = function(app) {
             snippet: req.body.snippet,
             byLine: req.body.byLine,
             image: req.body.image
-        }, function(err, createdSite){
+        }, function(err, createdArticle){
             if (err){ 
                 if (err.code == 11000){
                     console.log('this article has already been saved:', err);
@@ -36,9 +39,18 @@ exports.setup = function(app) {
                     console.log('error creating article:', err);
                 }
             } else {
-                // success
+                // successfully created an article, return all articles to browser
                 console.log("created new article");
-                //res.json(createdSite);
+                var promise = articleModel
+                    .find({})        
+                    .sort({updatedAt: -1})
+                    .exec();
+                promise.then(function(data){
+                    res.json(data);
+                })
+                .catch(function(err){
+                    console.log("error getting articles: ", err);
+                });
             }
         });
     });
@@ -49,7 +61,7 @@ exports.setup = function(app) {
         var promise = articleModel.findByIdAndRemove(req.body.articleId).exec();
         promise.then(function(data){
             console.log("deleted " + req.body.articleId);
-            //res.json(data);
+            res.json(data);
         })
         .catch(function(err){
             console.log("error deleting document: ", err);
