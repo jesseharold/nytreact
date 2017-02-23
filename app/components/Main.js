@@ -11,19 +11,23 @@ var helpers = require("../utils/helpers");
 // Creating the Main component
 var Main = React.createClass({
   getInitialState: function() {
-    console.log("getInitialState");
     return { 
         savedList: [] 
     };
   },
-  // The moment the page renders
-  componentDidMount: function() {
-    console.log("componentDidMount");
+  // get all saved articles and copy them to Main's state
+  componentWillMount: function(){
+    var self = this;
+    helpers.getSaved().then(function(result){
+      self.setState({savedList: result.data});
+    });
   },
-
-  // If the component changes
-  componentDidUpdate: function() {
-    console.log("componentDidUpdate");
+  updateSaved: function(savedArticles) {
+    //console.log("Main updateSaved");
+    //this.state.savedList = savedArticles;
+  },
+  removeFromSaved: function(removeMe){
+    //console.log("Main removeFromSaved", removeMe);
   },
   render: function() {
     return (
@@ -36,8 +40,8 @@ var Main = React.createClass({
             </p>
           </div>
           <div className="col-md-12">
-            <Search />
-            <Saved savedList={this.state.savedList} />
+            <Search saveHandler={this.updateSaved} />
+            <Saved savedList={this.state.savedList} removeHandler={this.removeFromSaved} />
           </div>
         </div>
       </div>

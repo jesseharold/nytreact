@@ -2,10 +2,28 @@ var React = require("react");
 
 var Saved = React.createClass({
   render: function() {
-    // generate the list items for each saved article
-    var savedList = this.props.savedList.map(function(article) {
-        return <li className="list-group-item" key={article.call}>{article.title}<button className="btn btn-warning btn-xs pull-right">Remove</button></li>;
-    });
+    // generate the html for each saved article
+    var savedList = "";
+    if (this.props.savedList){
+      var self = this;
+      savedList = this.props.savedList.map(function(article) {
+        var itemImage = "";
+        if (article.image){
+          itemImage = <img className="articleImage" src={article.image} />
+        } 
+        return <li className="list-group-item" key={article._id}>
+            {itemImage}
+            <form method="DELETE" action="/api">
+              <input type="hidden" name="id" value={article._id} />
+              <input type="submit" value="Remove" className="btn btn-info btn-xs pull-right" onClick={function(){self.props.removeHandler(article._id);}} />
+            </form>
+            <a className="articleLink" href={article.link} target="_blank">{article.title}</a>
+            <br />{article.byLine}
+            <br />{article.datePublished}
+            <p>{article.snippet}</p>
+          </li>;
+      });
+    }
     return (
         <div className="row">
           <div className="panel panel-default">

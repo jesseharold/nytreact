@@ -15,10 +15,11 @@ exports.setup = function(app) {
             res.json(data);
         })
         .catch(function(err){
-            console.log("error: ", err);
+            console.log("error getting articles: ", err);
         });
     });
 
+    // create a new saved article
     app.post("/api", function(req, res){
         articleModel.create({
             title: req.body.title,
@@ -36,8 +37,22 @@ exports.setup = function(app) {
                 }
             } else {
                 // success
-                res.json(createdSite);
+                console.log("created new article");
+                //res.json(createdSite);
             }
+        });
+    });
+
+    // delete a previously saved article
+    app.delete("/api", function(req, res) {
+        console.log("deleting", req.body);
+        var promise = articleModel.findByIdAndRemove(req.body.articleId).exec();
+        promise.then(function(data){
+            console.log("deleted " + req.body.articleId);
+            //res.json(data);
+        })
+        .catch(function(err){
+            console.log("error deleting document: ", err);
         });
     });
 };

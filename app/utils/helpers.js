@@ -61,11 +61,23 @@ var helpers = {
     return axios.get("/api");
   },
   //This function posts new saved articles to our database.
-  postSaved: function(title, link, comment) {
+  postSaved: function(title, link, image, byline) {
     return axios.post("api", {
       title: title,
       link: link,
-      comment: comment
+      image: image,
+      byLine: byLine,
+      //comment: comment
+    }).then(function(results){
+      console.log(results);
+    });
+  },
+  //This function removes a saved article from the database
+  removeFromSaved: function(articleId) {
+    return axios.delete("api", {
+      articleId: articleId
+    }).then(function(results){
+      console.log(results);
     });
   }
 };

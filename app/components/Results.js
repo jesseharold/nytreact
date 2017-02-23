@@ -1,8 +1,16 @@
 var React = require("react");
 
 var Results = React.createClass({
+  // If the component changes
+  componentDidUpdate: function() {
+    //console.log("componentDidUpdate");
+  },
+  saveHandler: function(title){
+    //console.log("saveHandler");
+  },
   render: function() {
     // generate the list items for each retrieved article
+    var self = this;
     var resultList = this.props.resultList.map(function(article) {
         var itemImage = "";
         if (article.image){
@@ -17,7 +25,7 @@ var Results = React.createClass({
               <input type="hidden" name="byLine" value={article.byline} />
               <input type="hidden" name="date" value={article.date} />
               <input type="hidden" name="snippet" value={article.snippet} />
-              <input type="submit" value="Save" className="btn btn-info btn-xs pull-right" />
+              <input type="submit" value="Save" className="btn btn-info btn-xs pull-right" onClick={self.saveHandler} />
             </form>
             <a className="articleLink" href={article.link} target="_blank">{article.headline}</a>
             <br />{article.byline}
