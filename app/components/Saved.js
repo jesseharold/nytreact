@@ -13,10 +13,10 @@ var Saved = React.createClass({
         } 
         return <li className="list-group-item" key={article._id}>
             {itemImage}
-            <form method="DELETE" action="/api">
+            <div>
               <input type="hidden" name="id" value={article._id} />
-              <input type="submit" value="Remove" className="btn btn-info btn-xs pull-right" onClick={function(){self.props.removeHandler(article._id);}} />
-            </form>
+              <button className="btn btn-info btn-xs pull-right" onClick={function(){self.props.removeHandler(article._id);}}>Remove</button>
+            </div>
             <a className="articleLink" href={article.link} target="_blank">{article.title}</a>
             <br />{article.byLine}
             <br />{article.datePublished}

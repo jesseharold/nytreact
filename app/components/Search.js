@@ -40,7 +40,7 @@ var Search = React.createClass({
                 </form>
                 </div>
             </div>
-                <Results resultList={this.state.resultList}/>
+                <Results saveHandler={this.props.saveHandler} resultList={this.state.resultList}/>
             </div>
         );
     }

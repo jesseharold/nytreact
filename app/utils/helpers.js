@@ -58,11 +58,11 @@ var helpers = {
   },
   // This function hits our own server to retrieve the saved articles
   getSaved: function() {
-    return axios.get("/api");
+    return axios.get("/api/saved");
   },
   //This function posts new saved articles to our database.
   postSaved: function(title, link, image, byline) {
-    return axios.post("api", {
+    return axios.post("api/saved", {
       title: title,
       link: link,
       image: image,
@@ -74,7 +74,7 @@ var helpers = {
   },
   //This function removes a saved article from the database
   removeFromSaved: function(articleId) {
-    return axios.delete("api", {
+    return axios.delete("api/saved", {
       articleId: articleId
     }).then(function(results){
       console.log(results);

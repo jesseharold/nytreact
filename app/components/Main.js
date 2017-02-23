@@ -23,11 +23,10 @@ var Main = React.createClass({
     });
   },
   updateSaved: function(savedArticles) {
-    //console.log("Main updateSaved");
-    //this.state.savedList = savedArticles;
+    console.log("Main updateSaved", savedArticles);
   },
   removeFromSaved: function(removeMe){
-    //console.log("Main removeFromSaved", removeMe);
+    console.log("Main removeFromSaved", removeMe);
   },
   render: function() {
     return (

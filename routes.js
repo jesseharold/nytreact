@@ -8,7 +8,7 @@ var commentModel = require('./models/Comment');
 
 exports.setup = function(app) {
     // list out all saveds articles
-    app.get("/api", function(req, res) {
+    app.get("/api/saved", function(req, res) {
         var promise = articleModel.find({}).exec();
         promise.then(function(data){
             //console.log(data);
@@ -20,7 +20,7 @@ exports.setup = function(app) {
     });
 
     // create a new saved article
-    app.post("/api", function(req, res){
+    app.post("/api/saved", function(req, res){
         articleModel.create({
             title: req.body.title,
             link: req.body.link,
@@ -44,7 +44,7 @@ exports.setup = function(app) {
     });
 
     // delete a previously saved article
-    app.delete("/api", function(req, res) {
+    app.delete("/api/saved", function(req, res) {
         console.log("deleting", req.body);
         var promise = articleModel.findByIdAndRemove(req.body.articleId).exec();
         promise.then(function(data){
