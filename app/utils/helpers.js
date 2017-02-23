@@ -15,6 +15,9 @@ var helpers = {
       searchURL += "&end_date=" + endDate + "1231";
     }
     return axios.get(searchURL).then(function(responseRaw){
+      if (responseRaw.status === "ERROR"){
+        return "Error: " + responseRaw.errors[0];
+      }
       if (responseRaw.data.response.docs.length > 0){
         // validate and process the data into the format we want
         var response = responseRaw.data.response.docs.map(function(article){

@@ -6,32 +6,25 @@ var Search = require("./Search");
 var Saved = require("./Saved");
 
 // Helper for making AJAX requests to our API
-//var helpers = require("../utils/helpers");
+var helpers = require("../utils/helpers");
 
 // Creating the Main component
 var Main = React.createClass({
-  // Here we set a generic state associated with the number of clicks
-  // Note how we added in this history state variable
   getInitialState: function() {
+    console.log("getInitialState");
     return { 
         savedList: [] 
     };
   },
-
-  // The moment the page renders get the History
+  // The moment the page renders
   componentDidMount: function() {
-
+    console.log("componentDidMount");
   },
 
-  // If the component changes (i.e. if a search is entered)...
+  // If the component changes
   componentDidUpdate: function() {
-
+    console.log("componentDidUpdate");
   },
-  // This function allows childrens to update the parent.
-  setTerm: function(term) {
-    // this.setState({ searchTerm: term });
-  },
-  // Here we render the function
   render: function() {
     return (
       <div className="container">

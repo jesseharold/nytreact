@@ -13,4 +13,5 @@ Optional To Dos
  - make date pickers calendars or sliders
  - change to es2015 style
  - make it look nicer
+ - add a "loading" spinner for after api call, before results returned
  - make it so you can add more comments after saving an article

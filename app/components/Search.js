@@ -32,9 +32,9 @@ var Search = React.createClass({
                 <form>
                     <label htmlFor="searchTopic">Topic</label>
                     <input type="text" className="form-control" id="searchTopic"/>
-                    <label htmlFor="searchYearStart">Start Year</label>
+                    <label htmlFor="searchYearStart">Start Year (inclusive)</label>
                     <input type="text" size="4" className="form-control" id="searchYearStart"/>
-                    <label htmlFor="searchYearEnd">End Year</label>
+                    <label htmlFor="searchYearEnd">End Year (inclusive)</label>
                     <input type="text" size="4" className="form-control" id="searchYearEnd"/>
                     <button className="btn btn-primary btn-lg center-block" onClick={this.handleSearch}>Search</button>
                 </form>
