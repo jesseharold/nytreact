@@ -13,7 +13,10 @@ var Search = React.createClass({
     handleSearch: function(event){
         event.preventDefault();
         var self = this;
-        var queryResult = helpers.queryNYTimes("prince harry", 2000, 2010).then(function(results){
+        var topic = document.getElementById("searchTopic").value;
+        var yearStart = document.getElementById("searchYearStart").value;
+        var yearEnd = document.getElementById("searchYearEnd").value;
+        var queryResult = helpers.queryNYTimes(topic, yearStart, yearEnd).then(function(results){
             self.setState({resultList: results});
         });
         return false;

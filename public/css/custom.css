@@ -8,6 +8,27 @@
 }
 #app .panel-heading {
     font-family: 'Yeseva One', cursive;
-    background-color: #226;
+    background-color: #3b8fbf;
     color: white;
+}
+#app .list-group-item {
+    overflow: hidden;
+}
+#app .btn.btn-primary {
+    background-color: #5a104e;
+    border-color: #2b0825;
+    margin-top: 10px;
+}
+#app .btn.btn-primary:hover {
+    background-color: #752367;
+    border-color: #2b0825;
+}
+#app li a.articleLink {
+    font-weight: bold;
+    font-size: 120%;
+}
+#app li img.articleImage {
+    float: left;
+    margin: 0 15px 5px 0;
+    max-width: 190px;
 }

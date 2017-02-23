@@ -3,9 +3,19 @@ var React = require("react");
 var Results = React.createClass({
   render: function() {
     // generate the list items for each retrieved article
-    console.log("this.props.resultList: ", this.props.resultList);
+    //console.log("this.props.resultList: ", this.props.resultList);
     var resultList = this.props.resultList.map(function(article) {
-        return <li className="list-group-item" key={article.id}><a href={article.link}>{article.headline}</a><br />{article.byline}<br />{article.date}<p>{article.snippet || "no snippet"}</p><button className="btn btn-info btn-xs pull-right">Save</button></li>;
+        var itemImage = "";
+        if (article.image){
+          itemImage = <img className="articleImage" src={article.image} />
+        } 
+        return <li className="list-group-item" key={article.id}>
+          {itemImage}
+          <button className="btn btn-info btn-xs pull-right">Save</button>
+          <a className="articleLink" href={article.link}>{article.headline}</a>
+          <br />{article.byline}
+          <br />{article.date}
+          <p>{article.snippet}</p></li>;
     });
     return (
       <div className="panel panel-default">

@@ -37,7 +37,7 @@ var helpers = {
             articleObject.snippet = article.lead_paragraph;
           }
           if (article.multimedia[0] && article.multimedia[0].type === "image"){
-            articleObject.image = article.multimedia[0].url;
+            articleObject.image = "http://www.nytimes.com/" + article.multimedia[0].url;
           }
           if (article.pub_date){
             articleObject.date = article.pub_date;
@@ -48,8 +48,9 @@ var helpers = {
           return articleObject;
         });
         return response;
+      } else {
+        return "";
       }
-      return "";
     });
   },
   // This function hits our own server to retrieve the saved articles
