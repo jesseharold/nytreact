@@ -6,13 +6,12 @@ A MERN app that searches api's using axios. Saves articles of interest in a db, 
 
 
 TO DO
- - change save and delete form submits to ajax calls
  - make it so you can add a comment when saving
+ - change save button to nonclickable after an item has been saved
 
 Optional To Dos
- - do data validation on dates, keywords
- - make date pickers calendars or sliders
- - change to es2015 style
+ - change to es2015
  - make it look nicer
+ - make year pickers sliders
  - add a "loading" spinner for after api call, before results returned
  - make it so you can edit comment in saved articles

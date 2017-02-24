@@ -16,7 +16,7 @@ var Results = React.createClass({
               <button className="btn btn-info btn-xs pull-right" onClick={function(){self.props.saveHandler(article)}}>Save</button>
               <a className="articleLink" href={article.link} target="_blank">{article.headline}</a>
               <br />{article.byline}
-              <br />{article.date}
+              <br />{article.datePublished}
               <p>{article.snippet}</p>
             </li>;
       });

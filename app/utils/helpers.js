@@ -43,7 +43,7 @@ var helpers = {
             articleObject.image = "http://www.nytimes.com/" + article.multimedia[0].url;
           }
           if (article.pub_date){
-            articleObject.date = article.pub_date;
+            articleObject.datePublished = article.pub_date;
           }
           if (article.web_url){
             articleObject.link = article.web_url;
@@ -67,14 +67,14 @@ var helpers = {
       link: newArticle.link,
       image: newArticle.image,
       byLine: newArticle.byline,
+      snippet: newArticle.snippet,
+      datePublished: newArticle.datePublished
       //comment: comment
     });
   },
   //This function removes a saved article from the database
   removeFromSaved: function(articleId) {
-    return axios.delete("api/saved", {
-      articleId: articleId
-    });
+    return axios.delete("api/delete/" + articleId);
   }
 };
 

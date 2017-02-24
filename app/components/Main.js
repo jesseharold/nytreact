@@ -17,26 +17,25 @@ var Main = React.createClass({
   },
   componentWillMount: function(){
     // get all saved articles and copy them to Main's state
-    var self = this;
-    helpers.getSaved().then(function(result){
-      self.setState({savedList: result.data});
-    });
+    helpers.getSaved().then(this.updateSavedState);
   },
   updateSaved: function(saveThisArticle) {
     // call the api to create a new saved article,
     // then update state with new saved list
-    var self = this;
-    helpers.postSaved(saveThisArticle).then(function(result){
-      self.setState({savedList: result.data});
-    });
+    helpers.postSaved(saveThisArticle).then(this.updateSavedState);
   },
   removeFromSaved: function(removeMe){
     // call the api to remove an article from saved
     // then update state with new saved list
-    console.log("Main removeFromSaved", removeMe);
-    helpers.removeFromSaved(removeMe).then(function(data){
-      console.log(data);
-    })
+    helpers.removeFromSaved(removeMe).then(this.updateSavedState);
+  },
+  updateSavedState: function(result){
+    //console.log("call to API complete. new saved list: ", result.data);
+    if (result.status === 200){
+      this.setState({savedList: result.data});
+    } else {
+      console.log("api call returned status " + result.status);
+    }
   },
   render: function() {
     return (

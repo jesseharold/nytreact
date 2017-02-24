@@ -10,12 +10,26 @@ var Search = React.createClass({
             resultList: []
         };
     },
+    popUp: function(msg){
+        alert(msg);
+    },
     handleSearch: function(event){
         event.preventDefault();
         var self = this;
         var topic = document.getElementById("searchTopic").value;
         var yearStart = document.getElementById("searchYearStart").value;
         var yearEnd = document.getElementById("searchYearEnd").value;
+        // validate input
+        if (topic.length < 2){
+            return this.popUp("You must enter a search term with at least 2 letters.");
+        }
+        if (yearStart.length !== 4 || yearEnd.length !== 4){
+            return this.popUp("Please enter a range of years for your search in YYYY format.");
+        }
+        if (parseInt(yearStart) > parseInt(yearEnd)){
+            return this.popUp("The start date must occur before the end date.");
+        }
+        // perform the query and update state
         var queryResult = helpers.queryNYTimes(topic, yearStart, yearEnd).then(function(results){
             self.setState({resultList: results});
         });

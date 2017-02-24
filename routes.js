@@ -27,7 +27,7 @@ exports.setup = function(app) {
         articleModel.create({
             title: req.body.title,
             link: req.body.link,
-            datePublished: req.body.date,
+            datePublished: req.body.datePublished,
             snippet: req.body.snippet,
             byLine: req.body.byLine,
             image: req.body.image
@@ -40,7 +40,7 @@ exports.setup = function(app) {
                 }
             } else {
                 // successfully created an article, return all articles to browser
-                console.log("created new article");
+                console.log("created new article ", createdArticle._id);
                 var promise = articleModel
                     .find({})        
                     .sort({updatedAt: -1})
@@ -56,12 +56,19 @@ exports.setup = function(app) {
     });
 
     // delete a previously saved article
-    app.delete("/api/saved", function(req, res) {
-        console.log("deleting", req.body);
-        var promise = articleModel.findByIdAndRemove(req.body.articleId).exec();
+    app.delete("/api/delete/:id", function(req, res) {
+        //console.log("deleting", req.body);
+        var promise = articleModel.findByIdAndRemove(req.params.id).exec();
         promise.then(function(data){
-            console.log("deleted " + req.body.articleId);
-            res.json(data);
+            // successfully deleted an article, return all articles to browser
+            console.log("deleted article ", data._id);
+            var promise = articleModel
+                .find({})        
+                .sort({updatedAt: -1})
+                .exec();
+            promise.then(function(data){
+                res.json(data);
+            });
         })
         .catch(function(err){
             console.log("error deleting document: ", err);
