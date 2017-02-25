@@ -7,12 +7,17 @@ var Savebutton = React.createClass({
             buttonOffText: "Saved",
             buttonOff: false, 
             buttonOffStyle: {backgroundColor: "#666", borderColor: "#777", cursor: "default"},
-            commentBoxStyle: {display: "none"}
+            commentBoxStyle: {display: "none"},
+            commentText: "Add a comment..."
         };
     },
-    saveClicked: function(){
+    doSave: function(){
         this.setState({buttonOff: true, buttonText: "Saved"});
-        this.props.clickHandler();
+        if (this.state.commentText  === "Add a comment..." || this.state.commentText.length < 2){
+            this.props.clickHandler("");
+        } else {
+            this.props.clickHandler(this.state.commentText);
+        }
     },
     showComment: function(){
         if (!this.state.buttonOff){
@@ -23,11 +28,19 @@ var Savebutton = React.createClass({
     hideComment: function(){
         this.setState({commentBoxStyle: {display: "none"}});  
     },
+    clearComment: function(event){
+        if (event.target.value == "Add a comment..."){
+            this.setState({commentText: " "});
+        }
+    },
+    updateComment: function(event){
+        this.setState({commentText: event.target.value});
+    },
     render: function() {
         return (
             <div className="saveButtonHolder" onMouseEnter={this.showComment} onMouseLeave={this.hideComment}>
-                <button className="btn btn-info btn-xs pull-right" style={this.state.buttonOff ? this.state.buttonOffStyle : {}} onClick={this.state.buttonOff ? null : this.saveClicked}>{this.state.buttonOff ? this.state.buttonOffText : this.state.buttonOnText }</button>
-                <textarea cols="20" rows="4" placeholder="Add a comment..." style={this.state.commentBoxStyle} className="saveAnnotation"></textarea>
+                <button className="btn btn-info btn-xs pull-right" style={this.state.buttonOff ? this.state.buttonOffStyle : {}} onClick={this.state.buttonOff ? null : this.doSave}>{this.state.buttonOff ? this.state.buttonOffText : this.state.buttonOnText }</button>
+                <textarea cols="20" rows="4" onFocus={this.clearComment} onChange={this.updateComment} style={this.state.commentBoxStyle} className="saveAnnotation">{this.state.commentText}</textarea>
             </div>
         );
     }

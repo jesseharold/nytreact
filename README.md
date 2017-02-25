@@ -4,6 +4,8 @@ Then save articles of interest to your Saved Articles area along with an annotat
 
 A MERN app that connects to api's using axios. Saves articles of interest in a mongo db, using mongoose.
 
+https://nytimes-archive-react.herokuapp.com/
+
 TO DO
  - use react router to hide/show components
  - make it so you can add a note when saving

@@ -40,13 +40,16 @@ var helpers = {
             articleObject.snippet = article.lead_paragraph;
           }
           if (article.multimedia[0] && article.multimedia[0].type === "image"){
-            articleObject.image = "http://www.nytimes.com/" + article.multimedia[0].url;
+            articleObject.image = "https://www.nytimes.com/" + article.multimedia[0].url;
           }
           if (article.pub_date){
             articleObject.datePublished = article.pub_date;
           }
           if (article.web_url){
             articleObject.link = article.web_url;
+          }
+          if (article.comment){
+            articleObject.comment = article.comment;
           }
           return articleObject;
         });
@@ -69,7 +72,7 @@ var helpers = {
       byLine: newArticle.byline,
       snippet: newArticle.snippet,
       datePublished: newArticle.datePublished
-      //comment: comment
+      comment: newArticle.comment
     });
   },
   //This function removes a saved article from the database

@@ -30,7 +30,8 @@ exports.setup = function(app) {
             datePublished: req.body.datePublished,
             snippet: req.body.snippet,
             byLine: req.body.byLine,
-            image: req.body.image
+            image: req.body.image,
+            comment: req.body.comment
         }, function(err, createdArticle){
             if (err){ 
                 if (err.code == 11000){

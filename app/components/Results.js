@@ -3,6 +3,9 @@ var React = require("react");
 var Savebutton = require("./Savebutton");
 
 var Results = React.createClass({
+  getCommentBeforeSave: function(article, comment){
+    this.props.saveHandler(article, comment);
+  },
   render: function() {
     // generate the list items for each retrieved article
     var self = this;
@@ -15,7 +18,7 @@ var Results = React.createClass({
           } 
           return <li className="list-group-item" key={article.id}>
               {itemImage}            
-              <Savebutton id={article.id} clickHandler={function(){self.props.saveHandler(article)}} />
+              <Savebutton id={article.id} clickHandler={function(comment){self.getCommentBeforeSave(article, comment)}} />
               <a className="articleLink" href={article.link} target="_blank">{article.headline}</a>
               <br />{article.byline}
               <br />{article.datePublished}

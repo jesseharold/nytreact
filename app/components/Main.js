@@ -19,9 +19,13 @@ var Main = React.createClass({
     // get all saved articles and copy them to Main's state
     helpers.getSaved().then(this.updateSavedState);
   },
-  updateSaved: function(saveThisArticle) {
+  updateSaved: function(saveThisArticle, comment) {
     // call the api to create a new saved article,
     // then update state with new saved list
+    if(comment){
+      // comment comes up from child component Savebutton
+      saveThisArticle.comment = comment;
+    }
     helpers.postSaved(saveThisArticle).then(this.updateSavedState);
   },
   removeFromSaved: function(removeMe){
