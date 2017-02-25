@@ -33,6 +33,17 @@ var Search = React.createClass({
             self.setState({resultList: results});
         });
         return false;
+    }, 
+    handleSave: function(saveThisArticle, comment) {
+        // call the api to create a new saved article,
+        // then update state with new saved list
+        if(comment){
+            // comment comes up from child component Savebutton
+            saveThisArticle.comment = comment;
+        }
+        helpers.postSaved(saveThisArticle).then(function(){
+            console.log("save complete.");
+        });
     },
     render: function() {
         return (
@@ -53,7 +64,7 @@ var Search = React.createClass({
                 </form>
                 </div>
             </div>
-                <Results saveHandler={this.props.saveHandler} resultList={this.state.resultList}/>
+                <Results saveHandler={this.handleSave} resultList={this.state.resultList}/>
             </div>
         );
     }

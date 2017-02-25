@@ -1,10 +1,11 @@
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
+var bodyParser = require("body-parser");
+var path = require("path");
+var mongoose = require("mongoose");
+mongoose.Promise = require("bluebird");
 
 // require all models
-var articleModel = require('./models/Article');
-var commentModel = require('./models/Comment');
+var articleModel = require("./models/Article");
+var commentModel = require("./models/Comment");
 
 exports.setup = function(app) {
     // list out all saveds articles
@@ -35,9 +36,9 @@ exports.setup = function(app) {
         }, function(err, createdArticle){
             if (err){ 
                 if (err.code == 11000){
-                    console.log('this article has already been saved:', err);
+                    console.log("this article has already been saved:", err);
                 } else {
-                    console.log('error creating article:', err);
+                    console.log("error creating article:", err);
                 }
             } else {
                 // successfully created an article, return all articles to browser
@@ -74,5 +75,10 @@ exports.setup = function(app) {
         .catch(function(err){
             console.log("error deleting document: ", err);
         });
+    });
+
+    // handle every other route with index.html, which serves the react app
+    app.get("*", function (request, response){
+        response.sendFile(path.resolve(__dirname, "public", "index.html"));
     });
 };

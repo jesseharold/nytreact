@@ -1,46 +1,9 @@
 // Include React
 var React = require("react");
-
-// Here we include all of the sub-components
-var Search = require("./Search");
-var Saved = require("./Saved");
-
-// Helper for making AJAX requests to our API
-var helpers = require("../utils/helpers");
+var Link = require('react-router').Link;
 
 // Creating the Main component
 var Main = React.createClass({
-  getInitialState: function() {
-    return { 
-        savedList: [] 
-    };
-  },
-  componentWillMount: function(){
-    // get all saved articles and copy them to Main's state
-    helpers.getSaved().then(this.updateSavedState);
-  },
-  updateSaved: function(saveThisArticle, comment) {
-    // call the api to create a new saved article,
-    // then update state with new saved list
-    if(comment){
-      // comment comes up from child component Savebutton
-      saveThisArticle.comment = comment;
-    }
-    helpers.postSaved(saveThisArticle).then(this.updateSavedState);
-  },
-  removeFromSaved: function(removeMe){
-    // call the api to remove an article from saved
-    // then update state with new saved list
-    helpers.removeFromSaved(removeMe).then(this.updateSavedState);
-  },
-  updateSavedState: function(result){
-    //console.log("call to API complete. new saved list: ", result.data);
-    if (result.status === 200){
-      this.setState({savedList: result.data});
-    } else {
-      console.log("api call returned status " + result.status);
-    }
-  },
   render: function() {
     return (
       <div className="container">
@@ -50,10 +13,13 @@ var Main = React.createClass({
             <p className="text-center">
               <em>Search for and annotate articles of interest</em>
             </p>
+            <nav>
+              <Link to="/search" className="navItem">Search</Link>
+              <Link to="/saved" className="navItem">Saved&nbsp;Articles</Link>
+            </nav>
           </div>
           <div className="col-md-12">
-            <Search saveHandler={this.updateSaved} />
-            <Saved savedList={this.state.savedList} removeHandler={this.removeFromSaved} />
+				    {this.props.children}
           </div>
         </div>
       </div>

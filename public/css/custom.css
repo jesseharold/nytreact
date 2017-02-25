@@ -5,6 +5,7 @@
     font-family: 'Yeseva One', cursive;
     background-color: #003;
     color: white;
+    position: relative;
 }
 #app .panel-heading {
     font-family: 'Yeseva One', cursive;
@@ -34,9 +35,10 @@
 }
 #app .savedArticleInfo {
     text-align: right;
-    width: 35%;
+    max-width: 35%;
     background-color: #eee;
-    padding: 2px;
+    padding: 2px 5px;
+    margin: -5px -10px 0 3px;
 }
 #app .dateSaved {
     font-style: italic;
@@ -51,4 +53,25 @@
 #app .saveButtonHolder textarea {
     z-index: 100;
     display: none;
+}
+#app nav {
+    right: 6px;
+    position: absolute;
+    top: 6px;
+}
+#app nav a.navItem {
+    color: #c6e4f5;
+    margin: 5px;
+    font-size: large;
+    background-color: #3b8fbf;
+    padding: 5px 17px;
+    display: block;
+    border-radius: 4px;
+}
+@media screen and (max-width: 660px) {
+    #app nav a.navItem {
+        display: inline;
+        font-size: small;
+        border-radius: 2px;
+    }
 }
