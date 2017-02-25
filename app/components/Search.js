@@ -42,7 +42,7 @@ var Search = React.createClass({
             saveThisArticle.comment = comment;
         }
         helpers.postSaved(saveThisArticle).then(function(){
-            console.log("save complete.");
+            //console.log("save complete.");
         });
     },
     render: function() {

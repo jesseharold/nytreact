@@ -4,13 +4,13 @@
 #app .jumbotron {
     font-family: 'Yeseva One', cursive;
     background-color: #003;
-    color: white;
+    color: #fff;
     position: relative;
 }
 #app .panel-heading {
     font-family: 'Yeseva One', cursive;
-    background-color: #3b8fbf;
-    color: white;
+    background-color: #9c992e;
+    color: #fff;
 }
 #app .list-group-item {
     overflow: visible;

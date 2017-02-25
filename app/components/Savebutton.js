@@ -30,7 +30,8 @@ var Savebutton = React.createClass({
     },
     clearComment: function(event){
         if (event.target.value == "Add a comment..."){
-            this.setState({commentText: " "});
+            //don't know why this isn't working.
+            this.setState({commentText: ""});
         }
     },
     updateComment: function(event){

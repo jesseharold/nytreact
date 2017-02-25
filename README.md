@@ -7,7 +7,7 @@ A MERN app that connects to api's using axios. Saves articles of interest in a m
 https://nytimes-archive-react.herokuapp.com/
 
 TO DO
- - use react router to hide/show components
+ - why isn't focus event working on comment box?
 
 Optional To Dos
  - change to es2015
@@ -16,4 +16,3 @@ Optional To Dos
  - add a "loading" spinner for after api call, before results returned
  - make it so you can edit comment in saved articles
  - fix saved at date so it's in the right time zone
- - make it so that when you remove an article, if it's currently on screen, the saved button goes back to regular state
