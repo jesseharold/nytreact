@@ -12,7 +12,7 @@
     color: white;
 }
 #app .list-group-item {
-    overflow: hidden;
+    overflow: visible;
 }
 #app .btn.btn-primary {
     background-color: #5a104e;
@@ -39,4 +39,13 @@
     font-style: italic;
     font-size: small;
     color: #888;
+}
+#app .saveButtonHolder {
+    display: block;
+    position: absolute;
+    right: 0;
+}
+#app .saveButtonHolder textarea {
+    z-index: 100;
+    display: none;
 }

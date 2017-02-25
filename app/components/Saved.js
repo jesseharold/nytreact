@@ -21,6 +21,7 @@ var Saved = React.createClass({
             <br />{article.byLine}
             <br />{article.datePublished}
             <p>{article.snippet}</p>
+            <div className="spacer" style={{clear: "both"}}></div>
           </li>;
       });
     }

@@ -20,6 +20,7 @@ var Results = React.createClass({
               <br />{article.byline}
               <br />{article.datePublished}
               <p>{article.snippet}</p>
+              <div className="spacer" style={{clear: "both"}}></div>
             </li>;
       });
     } else {
