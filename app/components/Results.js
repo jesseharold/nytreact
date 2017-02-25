@@ -1,5 +1,7 @@
 var React = require("react");
 
+var Savebutton = require("./Savebutton");
+
 var Results = React.createClass({
   render: function() {
     // generate the list items for each retrieved article
@@ -13,7 +15,7 @@ var Results = React.createClass({
           } 
           return <li className="list-group-item" key={article.id}>
               {itemImage}            
-              <button className="btn btn-info btn-xs pull-right" onClick={function(){self.props.saveHandler(article)}}>Save</button>
+              <Savebutton id={article.id} clickHandler={function(){self.props.saveHandler(article)}} />
               <a className="articleLink" href={article.link} target="_blank">{article.headline}</a>
               <br />{article.byline}
               <br />{article.datePublished}

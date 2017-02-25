@@ -13,9 +13,9 @@ var Saved = React.createClass({
         } 
         return <li className="list-group-item" key={article._id}>
             {itemImage}
-            <div>
-              <input type="hidden" name="id" value={article._id} />
-              <button className="btn btn-info btn-xs pull-right" onClick={function(){self.props.removeHandler(article._id);}}>Remove</button>
+            <div className="savedArticleInfo pull-right">
+              <button className="btn btn-info btn-xs" onClick={function(){self.props.removeHandler(article._id);}}>Remove</button>
+              <div className="dateSaved">Saved {article.createdAt.substring(0, article.createdAt.indexOf("T"))}</div>
             </div>
             <a className="articleLink" href={article.link} target="_blank">{article.title}</a>
             <br />{article.byLine}

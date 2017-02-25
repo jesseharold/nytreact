@@ -32,3 +32,11 @@
     margin: 0 15px 5px 0;
     max-width: 190px;
 }
+#app .savedArticleInfo {
+    text-align: right;
+}
+#app .dateSaved {
+    font-style: italic;
+    font-size: small;
+    color: #888;
+}

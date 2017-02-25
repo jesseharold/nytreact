@@ -1,6 +1,5 @@
 var React = require("react");
 
-//var Form = require("./Form");
 var Results = require("./Results");
 var helpers = require("../utils/helpers");
 
