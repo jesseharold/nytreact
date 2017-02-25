@@ -7,9 +7,9 @@ mongoose.Promise = require('bluebird');
 // *** Database configuration ***
 var mongoDBConnection = "mongodb://";
 // for local testing:
-mongoDBConnection += "localhost/nytimesReact";
+// mongoDBConnection += "localhost/nytimesReact";
 // for production:
-//mongoDBConnection += "heroku_svhdvhb7:4gfv7i2vpf44td5024frsjv6kf@ds161109.mlab.com:61109/heroku_svhdvhb7";
+mongoDBConnection += "heroku_svhdvhb7:4gfv7i2vpf44td5024frsjv6kf@ds161109.mlab.com:61109/heroku_svhdvhb7";
 mongoose.connect(mongoDBConnection);
 var db = mongoose.connection;
 // Log any mongoose errors

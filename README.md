@@ -8,7 +8,6 @@ https://nytimes-archive-react.herokuapp.com/
 
 TO DO
  - use react router to hide/show components
- - make it so you can add a note when saving
 
 Optional To Dos
  - change to es2015
