@@ -15,6 +15,7 @@ var Saved = React.createClass({
             {itemImage}
             <div className="savedArticleInfo pull-right">
               <button className="btn btn-info btn-xs" onClick={function(){self.props.removeHandler(article._id);}}>Remove</button>
+              <div className="savedComment">{article.comment}</div>
               <div className="dateSaved">Saved {article.createdAt.substring(0, article.createdAt.indexOf("T"))}</div>
             </div>
             <a className="articleLink" href={article.link} target="_blank">{article.title}</a>

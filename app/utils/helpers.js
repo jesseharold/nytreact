@@ -71,7 +71,7 @@ var helpers = {
       image: newArticle.image,
       byLine: newArticle.byline,
       snippet: newArticle.snippet,
-      datePublished: newArticle.datePublished
+      datePublished: newArticle.datePublished,
       comment: newArticle.comment
     });
   },

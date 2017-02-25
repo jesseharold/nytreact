@@ -34,6 +34,9 @@
 }
 #app .savedArticleInfo {
     text-align: right;
+    width: 35%;
+    background-color: #eee;
+    padding: 2px;
 }
 #app .dateSaved {
     font-style: italic;
